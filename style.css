@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap');
+
+
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #0a0206;
+    color: rgb(250, 249, 249);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    background-color: aquamarine;
+    color:#370cf5;
+    text-align: center;
+}
+
+/* Style the main content */
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+/* Style the sandwich menu */
+.sandwich-menu {
+    width: 30%;
+}
+
+.sandwich-menu h2 {
+    margin-bottom: 0.5rem;
+}
+
+.sandwich-menu ul {
+    list-style-type: none;
+}
+
+.sandwich-menu ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sandwich-menu ul li a {
+    text-decoration: none;
+    color: #f81f1f;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sandwich-menu ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style the sandwich details section */
+.sandwich-details {
+    width: 65%;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+/* Style the footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
