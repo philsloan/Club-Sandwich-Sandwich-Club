@@ -40,6 +40,10 @@ Sandwich.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    image_link: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
