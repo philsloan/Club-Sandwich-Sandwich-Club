@@ -13,4 +13,4 @@ var buttonsSource = document.getElementById("button-template").innerHTML;
 
             // Insert the rendered buttons HTML into the document
             document.querySelector(".link-boxes").innerHTML = buttonsHtml;
-            
+
