@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandwich Lovers</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 </head>
 <body>
     <header>
@@ -91,7 +92,17 @@
                 </div>
             </div>
         </section>
-        
+        <script id="button-template" type="text/x-handlebars-template">
+            {{#each buttons}}
+                <div class="link-box">
+                    <div class="text-container">
+                        <a href="#">{{label}}</a>
+                        <button>{{buttonText}}</button>
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+        <script src="script.js"></script>
     </main>
 </body>
 </html>
