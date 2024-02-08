@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwich Lovers</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+</head>
+<body>
+    <header>
+      <h1>Club Sandwich Sandwich Club</h1>
+        <div class="user-box">
+            <input type="text" placeholder="Enter your email">
+        </div>
+    </header>
+    <main>
+        <section class="video-section">
+            <div class="video-box">
+                <video controls autoplay muted loop>
+                    <source src="images/marco-shot-inside-the-sliced-club-sandwich-camera-slides-inside-the-food-macro-SBV-336732699-preview.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        <h2>TOP 3 RATED SANDWICHES!</h2>
+        <h3>YUMMMY...ENJOY!</h3>
+        <section class="sandwich-options">
+            <div class="sandwich-option">
+                <img src="images/mae-mu-GIUc-l74UT8-unsplash.jpg" alt="Sandwich 1">
+                <div class="text-container">
+                <p>Roast Beef Sandwich</p>
+                <ul>
+                    <li>Roast Beef</li>
+                    <li>Creamy Horseradish Sauce</li>
+                    <li>Lettuce</li>
+                    <li>Red Onions</li>
+                    <li>Radishes</li>
+                    <li>Tomatoes</li>
+                    <li>Aged Cheddar</li>
+                    <li>French Bread</li>
+                </ul>
+            </div>
+            </div>
+            <div class="sandwich-option">
+                <img src="images/getty-images-kY8QX7QYa1U-unsplash.jpg" alt="Sandwich 2">
+                <div class="text-container">
+                <p>Turkey Sandwich</p>
+                <ul>
+                    <li>Deli Turkey</li>
+                    <li>Mayonnaise</li>
+                    <li>Lettuce</li>
+                    <li>Tomatoes</li>
+                    <li>Aged Cheddar</li>
+                    <li>Whole Wheat Bread</li>
+                </ul>
+            </div>    
+            </div>
+            <div class="sandwich-option">
+                <img src="images/davey-gravy-Feq9b58ZSqg-unsplash.jpg" alt="Sandwich 3">
+                <div class="text-container">
+                <p>Perfect Club Sandwich</p>
+                <ul>
+                    <li>Deli Turkey</li>
+                    <li>Deli Ham</li>
+                    <li>Bacon</li>
+                    <li>Mayonnaise</li>
+                    <li>Lettuce</li>
+                    <li>Tomatoes</li>
+                    <li>Provolone Cheese</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+        <section class="link-boxes">
+            <div class="link-box">
+                <div class="text-container">
+                    <a href="#">NOT WHAT YOU'RE LOOKING FOR?</a>
+                    <button>Click here for more</button>
+                </div>
+            </div>
+            <div class="link-box">
+                <div class="text-container">
+                    <a href="#">RATE YOUR FAVORITE</a>
+                    <button>Rate here</button>
+                </div>
+            </div>
+            <div class="link-box">
+                <div class="text-container">
+                    <a href="#">FEELING LUCKY?</a>
+                    <button>Let us pick for you</button>
+                </div>
+            </div>
+        </section>
+        <script id="button-template" type="text/x-handlebars-template">
+            {{#each buttons}}
+                <div class="link-box">
+                    <div class="text-container">
+                        <a href="#">{{label}}</a>
+                        <button>{{buttonText}}</button>
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+        <script src="script.js"></script>
+    </main>
+</body>
+</html>
+
