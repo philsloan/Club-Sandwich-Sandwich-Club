@@ -20,7 +20,7 @@ const sess = {
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+app.use(session(sess));
 const hbs = exhbs.create({}); // add helper functions if needed, dont forget to add the top
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
