@@ -21,7 +21,7 @@ Rating.init(
       references: {
         model: "users",
         key: "id",
-      },
+      }, 
     },
     sandwich_id: {
       type: DataTypes.INTEGER,

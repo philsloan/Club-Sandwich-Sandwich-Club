@@ -73,10 +73,3 @@ module.exports = {
 
 
 
-
-// bread,
-// condiment,
-// meat,
-// vegetable,
-// cheese,
-// other

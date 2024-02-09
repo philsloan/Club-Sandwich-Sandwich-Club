@@ -27,7 +27,7 @@ module.exports = {
     
     // Create new sandwich object
     const newSandwich = {
-      id: sandwiches.length + 1, // Placeholder for generating unique ID (you may use UUID or auto-increment in MySQL)
+      id: sandwiches.length + 1, 
       name,
       ingredients: {
         bread,
@@ -37,7 +37,7 @@ module.exports = {
         cheese,
         other
       },
-      rating: null // Placeholder for rating (will be updated later)
+      rating: null 
     };
     
     // Add new sandwich to the list
