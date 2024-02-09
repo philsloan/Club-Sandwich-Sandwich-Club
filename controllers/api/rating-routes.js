@@ -1,38 +1,38 @@
-// Import any necessary modules or dependencies here
-const express = require('express');
-const router = express.Router();
-const RatingController = require('./rating-routes');
+const router = require('express').Router();
+const {Rating} = require('../../models');
 
 // Route for rating a sandwich
-router.post('/sandwich/:id/rate', RatingController.rate);
+router.post('/:id', async (req, res) => {
+  try {
+    const dbRatingData = await Rating.create({
+     rating: req.body.rating,
+     user_id: req.body.user_id,
+     sandwich_id: parseInt(req.params.id),
+    });
+    res.status(200).json(dbRatingData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  } 
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const dbRatingData = await Rating.destroy({
+      where: {
+        id: req.params.id, 
+      }, 
+    }) 
+    if (!dbRatingData) {
+      res.status(404).json({message: "There is no rating found with that id"});
+      return;
+    }
+    res.status(200).json(dbRatingData);
+  } catch(err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
 
 
-// Placeholder data (you'll replace this with your database interactions)
-let sandwiches = [];
-
-module.exports = {
-  // Controller function for rating a sandwich
-  rate: (req, res) => {
-    const { id } = req.params;
-    const { rating } = req.body;
-    
-    // Check if the provided sandwich ID is valid
-    const sandwich = sandwiches.find(s => s.id === id);
-    if (!sandwich) {
-      return res.status(404).json({ error: 'Sandwich not found' });
-    }
-
-    // Validate rating value
-    if (rating < 1 || rating > 10) {
-      return res.status(400).json({ error: 'Invalid rating value. Rating must be between 1 and 10.' });
-    }
-
-    // Update the rating of the sandwich
-    sandwich.rating = rating;
-
-    // Return success response
-    return res.status(200).json({ message: 'Rating updated successfully' });
-  }
-};
