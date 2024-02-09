@@ -30,13 +30,21 @@ router.get("/", async (req, res) => {
     });
 
     const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
-    res.render("homepage");
-    //res.status(200).json(ratingDbList)
+    res.render("homepage", { ratingsList });
+    // res.status(200).json(ratingDbList)
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+router.get("/login", async (req, res) => {
+  res.render("login");
+}
+);
+
+
+
 
 module.exports = router;
 
