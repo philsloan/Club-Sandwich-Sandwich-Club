@@ -29,8 +29,8 @@ router.get("/", async (req, res) => {
       order: [[sequelize.literal("avgRating"), "DESC"]],
     });
 
-    const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
-    res.render("homepage", { ratingsList });
+    // const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
+    // res.render("homepage", { ratingsList });
        res.status(200).json(ratingDbList)
   } catch (error) {
     console.error(error);
