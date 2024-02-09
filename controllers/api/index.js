@@ -5,15 +5,15 @@ const SandwichController = require('./sandwich-routes');
 const RatingController = require('./rating-routes');
 
 // User Routes
-router.post('/users/login', UserController.login); // User login route
-router.post('/users/register', UserController.register); // User registration route
+router.post('/users/login', UserController.login); 
+router.post('/users/register', UserController.register); 
 
 // Sandwich Routes
-router.post('/sandwiches', SandwichController.create); // Create a new sandwich
-router.get('/sandwiches/:id', SandwichController.get); // Get details of a specific sandwich
+router.post('/sandwiches', SandwichController.create); 
+router.get('/sandwiches/:id', SandwichController.get); 
 
 // Rating Routes
-router.post('/ratings/sandwich/:id', RatingController.rate); // Rate a sandwich
+router.post('/ratings/sandwich/:id', RatingController.rate); 
 
 module.exports = router;
 
