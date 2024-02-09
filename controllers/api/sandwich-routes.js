@@ -1,4 +1,3 @@
-// Import any necessary modules or dependencies here
 const router = require('express').Router();
 const {Sandwich, User, Rating} = require("../../models");
 // Route for creating a new sandwich
