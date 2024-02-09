@@ -1,95 +1,41 @@
-const router = require("express").Router();
-const { User, Rating, Sandwich } = require("../../models");
+const router = require('express').Router();
+const { User } = require('../../models');
 
-// Route for user login
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
-    const user = await User.findOne({ where: { email: req.body.email } });
-    if (!user) {
-      res.status(401).json("No user found");
+    // Find the user who matches the posted e-mail address
+    const userData = await User.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email, please try again' });
+      return;
     }
+
+    // Create session variables based on the logged in user
     req.session.save(() => {
-      req.session.loggedIn= true
-      res.status(200).json(user);
-    })
-    
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
-// Route for user registration
-router.post("/register");
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    // Remove the session variables
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;
 
-let users = [];
-
-module.exports = {
-  // Controller function for user login
-  login: (req, res) => {
-    const { email } = req.body;
-
-    // Check if user with provided email exists
-    const user = users.find((u) => u.email === email);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    // Return user data or authentication token
-    return res.status(200).json({ user });
-  },
-
-  // Controller function for user registration
-  register: (req, res) => {
-    const {
-      email,
-      favoriteSandwich,
-      bread,
-      condiment,
-      meat,
-      vegetable,
-      cheese,
-      other,
-    } = req.body;
-
-    // Validate user input (you can add more validation as needed)
-    if (
-      !email ||
-      !favoriteSandwich ||
-      !bread ||
-      !condiment ||
-      !meat ||
-      !vegetable ||
-      !cheese ||
-      !other
-    ) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
-
-    // Check if user already exists
-    const existingUser = users.find((u) => u.email === email);
-    if (existingUser) {
-      return res.status(409).json({ error: "User already exists" });
-    }
-
-    // Create new user object
-    const newUser = {
-      email,
-      favoriteSandwich,
-      bread,
-      condiment,
-      meat,
-      vegetable,
-      cheese,
-      other,
-    };
-
-    // Add new user to the list
-    users.push(newUser);
-
-    // Return success response
-    return res.status(201).json({ message: "User registered successfully" });
-  },
-};
