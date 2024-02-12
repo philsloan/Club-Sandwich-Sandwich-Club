@@ -3,10 +3,11 @@ const router = express.Router();
 const { User, Rating, Sandwich } = require("../models");
 const sequelize = require("../config/connection");
 
-
-
-router.get("/sandwich/test", async (req, res) => {
-    res.render("sandwich");
+router.get('/', async (req, res) => {
+  const sammichData = await Sandwich.findAll().catch((err) => {
+    res.json(err);
+  });
+  res.json(sammichData);
 });
 
 
