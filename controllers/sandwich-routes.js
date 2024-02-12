@@ -3,10 +3,11 @@ const router = express.Router();
 const { User, Rating, Sandwich } = require("../models");
 const sequelize = require("../config/connection");
 
-
-
-router.get("/sandwich/test", async (req, res) => {
-    res.render("sandwich");
+router.get('/', async (req, res) => {
+  const sammichData = await Sandwich.findAll().catch((err) => {
+    res.json(err);
+  });
+  res.json(sammichData);
 });
 
 
@@ -35,9 +36,9 @@ router.get("/search", async (req, res) => {
         console.log("Found Sandwich:", sandwich);
         if (sandwich) {
             const cleanSandwich = sandwich.get({ plain: true });
-            res.render("searchResult", { sandwich: cleanSandwich });
+            res.render("sandwich", { sandwich: cleanSandwich });
         } else {
-            res.render("searchResult", { message: "No sandwich found for the given term." });
+            res.render("sandwich", { message: "No sandwich found for the given term." });
         }
     } catch (error) {
         console.error("Error searching for sandwich:", error);
