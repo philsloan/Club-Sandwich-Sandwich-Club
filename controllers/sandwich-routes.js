@@ -26,4 +26,27 @@ router.get("/allSandwiches", async (req, res) => {
     }
 });
 
+
+router.get("/search", async (req, res) => {
+    try {
+        const searchTerm = req.query.term.toLowerCase();
+        console.log("Search Term:", searchTerm);
+        const sandwich = await Sandwich.findOne({ where: { name: searchTerm } });
+        console.log("Found Sandwich:", sandwich);
+        if (sandwich) {
+            const cleanSandwich = sandwich.get({ plain: true });
+            res.render("searchResult", { sandwich: cleanSandwich });
+        } else {
+            res.render("searchResult", { message: "No sandwich found for the given term." });
+        }
+    } catch (error) {
+        console.error("Error searching for sandwich:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+
+
+
 module.exports = router;

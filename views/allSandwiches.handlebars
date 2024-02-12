@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Sandwiches</title>
 </head>
-<body>
-    <h1>All Sandwiches</h1>
-    {{#each cleanSandwiches as | sandwich |}}
-        <div class="sandwich">
-            <h2>{{sandwich.name}}</h2>
-            <img src="{{sandwich.image_link}}" alt="{{sandwich.name}}">
-    {{/each}}
-</body>
-</html>
 
+<body>
+    <h1></h1>
+    {{#each cleanSandwiches as | sandwich |}}
+    <div class="sandwich">
+        <h2>{{sandwich.name}}</h2>
+        <div class="rating">
+            <div class="rating-container">
+                <p class="rate-text">Rate me!</p>
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+        </div>
+        <img src="{{sandwich.image_link}}" alt="{{sandwich.name}}">
+        {{/each}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.rating-container .star').click(function() {
+            var value = $(this).data('value');
+            $(this).siblings('.star').removeClass('active').css('color', 'green');
+            $(this).prevAll('.star').addBack().addClass('active').css('color', 'orange');
+        });
+    });
+</script>
+</body>
+
+</html>
