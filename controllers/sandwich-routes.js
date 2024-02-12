@@ -1,8 +1,7 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const { User, Rating, Sandwich } = require("../models");
 const sequelize = require("../config/connection");
-
-/*create a get all sandwich route*/
 
 router.get('/', async (req, res) => {
   const sammichData = await Sandwich.findAll().catch((err) => {
@@ -11,33 +10,21 @@ router.get('/', async (req, res) => {
   res.json(sammichData);
 });
 
-/*get name route*/
-router.get('/:name', (req, res) => {
-    Sandwich.findOne(
-      {
-        where: { 
-          name: req.params.name 
-        },
-      }
-    ).then((sammichData) => {
-      // const sammy = sammichData.get({plain: true})
-      res.json(sammichData);
-      // res.render("", {sammy})
-    });
-  });
-  
-
-/*create a sign up route   */
-
-router.get("/test", async (req, res) => {
-    res.render("sandwich");
-}
-);
 
 
-router.get("/sandwiches/test", async (req, res) => {
-    res.render("allSandwiches");
-}
-);
+router.get("/allSandwiches", async (req, res) => {
+    try {
+        const sandwiches = await Sandwich.findAll(); 
+        console.log(sandwiches)
+        const cleanSandwiches = sandwiches.map((sandwich) => {
+            return sandwich.get({plain:true})
+        })
+        console.log(cleanSandwiches)
+        res.render("allSandwiches", { cleanSandwiches }); 
+    } catch (error) {
+        console.error("Error fetching sandwiches:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 module.exports = router;
