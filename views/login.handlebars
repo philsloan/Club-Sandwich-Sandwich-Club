@@ -9,11 +9,11 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form action="login_process.php" method="post">
+       
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" required>
-        <button type="submit">Login</button>
-    </form>
+        <button id="submit" type="submit">Login</button>
+   
 
     </div>
 </body>
@@ -23,4 +23,46 @@
 
 
 
+<script>
+    const submit = document.getElementById("submit")
+    
+    
+    submit.addEventListener("click",
+        async function(event){
+            event.preventDefault()
+            const email = document.getElementById("email").value
+            console.log(email)
+            const response = await fetch("http://localhost:3001/api/users/login", {
+                method: "POST",
+                  headers: {
+        "Content-Type": "application/json",
+      }, 
+                body: JSON.stringify({
+                    email: email}
+                )
 
+            })
+            console.log(response)
+            if(response.ok){
+                window.location.replace("/sandwich/allSandwiches")
+            }
+            else(
+                alert("Wrong! Email not created")
+            ) 
+            //alert(email)
+        }
+    )
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</script>
