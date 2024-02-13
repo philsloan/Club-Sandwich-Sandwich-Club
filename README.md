@@ -22,13 +22,11 @@ This project is a simple RESTful API built with Node.js and Express.js, using Ha
 - Sequelize ORM
 - [Any side tech(s) that we used]
 
-## Folder Structure
 
- - *After we're done*
 
 ## Deployed application
 
- - *link to Heroku deployed application whenever done*
+ - https://rocky-savannah-80636-aecd9bc6ba64.herokuapp.com/
 
 ## Credits
 
