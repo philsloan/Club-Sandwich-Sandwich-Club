@@ -14,7 +14,7 @@ const sandwichdata = [
   },
   {
     name: 'Reuben',
-    bread: 'Rye',
+    bread: 'Rye bread',
     condiment: 'Russian dressing',
     meat: 'Sliced Corn Beef',
     vegetable: 'Onions',
@@ -25,7 +25,7 @@ const sandwichdata = [
   },
   {
     name: 'Grilled Cheese',
-    bread: 'White',
+    bread: 'White bread',
     condiment: 'Butter',
     meat: '',
     vegetable: '',
@@ -36,7 +36,7 @@ const sandwichdata = [
   },
   {
     name: 'Club Sandwich',
-    bread: 'Toasted White',
+    bread: 'Toasted White bread',
     condiment: 'Mayo',
     meat: 'Turkey & Bacon',
     vegetable: 'Lettuce & Tomato',
