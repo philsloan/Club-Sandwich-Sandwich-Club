@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
         include: [
           [
             sequelize.literal(
-              "(SELECT AVG(rating) FROM ratings WHERE ratings.sandwich_id = Sandwich.id)"
+              "(SELECT AVG(rating) FROM ratings WHERE ratings.sandwich_id = sandwich.id)"
             ),
             "avgRating",
           ],
