@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Sandwich, User, Rating} = require("../../models");
+const {Sandwich} = require("../../models");
 // Route for creating a new sandwich
 router.post('/', async (req, res) => {
   try {
