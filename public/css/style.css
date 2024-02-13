@@ -22,6 +22,7 @@ header h1 {
     margin-left: 40px;
 }
 
+
 h2 {
     font-size: 40px;
     text-align: center;
@@ -172,6 +173,7 @@ body {
     padding: 0;
     background-color: #f0d9b8;
 }
+
 
 .container {
     width: 400px;
