@@ -1,82 +1,44 @@
 <main>
-        <section class="video-section">
-            <div class="video-box">
-                <video controls autoplay muted loop>
-                    <source src="images/marco-shot-inside-the-sliced-club-sandwich-camera-slides-inside-the-food-macro-SBV-336732699-preview.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+    <section class="video-section">
+        <div class="video-box">
+            <video controls autoplay muted loop>
+                <source
+                    src="images/marco-shot-inside-the-sliced-club-sandwich-camera-slides-inside-the-food-macro-SBV-336732699-preview.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+    <h2>TOP 3 RATED SANDWICHES!</h2>
+    <h3>YUMMMY...ENJOY!</h3>
+    <section class="sandwich-options">
+        {{#each ratingsList as |sandwich|}}
+        {{> sandwichDetails}}
+        {{/each}}
+    </section>
+    <section class="link-boxes">
+        <div class="link-box">
+            <div class="text-container">
+                <a href="">NOT WHAT YOU'RE LOOKING FOR?</a>
+                <button
+                    onclick="window.location.href='https://rocky-savannah-80636-aecd9bc6ba64.herokuapp.com/sandwich/allSandwiches';">Click
+                    here for more</button>
             </div>
-        </section>
-        <h2>TOP 3 RATED SANDWICHES!</h2>
-        <h3>YUMMMY...ENJOY!</h3>
-        <section class="sandwich-options">
-            <div class="sandwich-option">
-                <img src="images/mae-mu-GIUc-l74UT8-unsplash.jpg" alt="Sandwich 1">
-                <div class="text-container">
-                <p>Roast Beef Sandwich</p>
-                <ul>
-                    <li>Roast Beef</li>
-                    <li>Creamy Horseradish Sauce</li>
-                    <li>Lettuce</li>
-                    <li>Red Onions</li>
-                    <li>Radishes</li>
-                    <li>Tomatoes</li>
-                    <li>Aged Cheddar</li>
-                    <li>French Bread</li>
-                </ul>
+        </div>
+        <div class="search-box">
+            <div class="text-container">
+                <input type="text" placeholder="Search here">
             </div>
+        </div>
+        <div class="link-box">
+            <div class="text-container">
+                <a href="#">FEELING LUCKY?</a>
+                <button>Let us pick for you</button>
             </div>
-            <div class="sandwich-option">
-                <img src="images/getty-images-kY8QX7QYa1U-unsplash.jpg" alt="Sandwich 2">
-                <div class="text-container">
-                <p>Turkey Sandwich</p>
-                <ul>
-                    <li>Deli Turkey</li>
-                    <li>Mayonnaise</li>
-                    <li>Lettuce</li>
-                    <li>Tomatoes</li>
-                    <li>Aged Cheddar</li>
-                    <li>Whole Wheat Bread</li>
-                </ul>
-            </div>    
-            </div>
-            <div class="sandwich-option">
-                <img src="images/davey-gravy-Feq9b58ZSqg-unsplash.jpg" alt="Sandwich 3">
-                <div class="text-container">
-                <p>Perfect Club Sandwich</p>
-                <ul>
-                    <li>Deli Turkey</li>
-                    <li>Deli Ham</li>
-                    <li>Bacon</li>
-                    <li>Mayonnaise</li>
-                    <li>Lettuce</li>
-                    <li>Tomatoes</li>
-                    <li>Provolone Cheese</li>
-                </ul>
-            </div>
-            </div>
-        </section>
-        <section class="link-boxes">
-            <div class="link-box">
-                <div class="text-container">
-                    <a href="">NOT WHAT YOU'RE LOOKING FOR?</a>
-                    <button onclick="window.location.href='https://rocky-savannah-80636-aecd9bc6ba64.herokuapp.com/sandwich/allSandwiches';">Click here for more</button>
-                </div>
-            </div>
-            <div class="search-box">
-                <div class="text-container">
-                    <input type="text" placeholder="Search here">
-                </div>
-            </div>
-            <div class="link-box">
-                <div class="text-container">
-                    <a href="#">FEELING LUCKY?</a>
-                    <button>Let us pick for you</button>
-                </div>
-            </div>
-        </section>
-          <script>
-      document.addEventListener('DOMContentLoaded', function () {
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.search-box input').addEventListener('keyup', function (event) {
                 if (event.key === 'Enter') {
                     var searchTerm = this.value.trim();
@@ -87,15 +49,4 @@
             });
         });
     </script>
-        {{!-- <script id="button-template" type="text/x-handlebars-template">
-            {{#each buttons}}
-                <div class="link-box">
-                    <div class="text-container">
-                        <a href="#">{{label}}</a>
-                        <button>{{buttonText}}</button>
-                    </div>
-                </div>
-            {{/each}}
-        </script>
-        <script src="/js/script.js"></script> --}}
-    </main>
+</main>
