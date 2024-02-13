@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        img {
-            max-width: 1500px; 
-            height: auto;
-            display: block; 
-            margin: 0 auto 10px; 
-        }
-
-        body {
-            font-size: 24px; 
-            text-align: center; 
-        }
-    </style>
-</head>
-
-<body>
+<div class = "sandwich-container">
     <h1>{{message}}</h1>
-    <img src="{{sandwich.image_link}}">
+    <img src="{{sandwich.image_link}}" class="sandwich-img">
     <p stlye="font-size: 24px;">{{sandwich.name}}</p>
     {{sandwich.bread}}
     {{sandwich.condiment}}
@@ -30,6 +9,5 @@
     {{sandwich.vegetable}}
     {{sandwich.cheese}}
     {{sandwich.other}}
-</body>
+</div>
 
-</html>

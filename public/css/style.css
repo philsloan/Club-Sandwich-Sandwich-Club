@@ -15,6 +15,11 @@ header {
     background-color: rgb(247, 223, 191);
 }
 
+.sandwich-container{
+    font-size: 24px; 
+            text-align: center; 
+}
+
 header h1 {
     font-size: 50px;
     color: #1bcc50;
@@ -263,4 +268,9 @@ body {
     color: orange;
 }
 
-
+.sandwich-img {
+    max-width: 1500px; 
+            height: auto;
+            display: block; 
+            margin: 0 auto 10px; 
+}
