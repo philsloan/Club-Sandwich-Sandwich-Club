@@ -1,7 +1,5 @@
-const express = require("express");
-const router = express.Router();
-const { User, Rating, Sandwich } = require("../models");
-const sequelize = require("../config/connection");
+const router = require("express").Router();
+const { Sandwich } = require("../models");
 
 router.get('/', async (req, res) => {
   const sammichData = await Sandwich.findAll().catch((err) => {

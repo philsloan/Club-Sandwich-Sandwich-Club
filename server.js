@@ -1,5 +1,4 @@
 const express = require("express");
-const sandwichRoutes = require("./controllers/sandwich-routes");
 const routes = require("./controllers");
 const path = require("path");
 const exhbs = require("express-handlebars");
