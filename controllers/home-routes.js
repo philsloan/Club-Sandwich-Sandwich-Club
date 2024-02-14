@@ -28,7 +28,6 @@ router.get("/", async (req, res) => {
       limit: 3,
     });
     const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
-    console.log(ratingsList);
     res.render("homepage", { ratingsList });
   } catch (error) {
     console.error(error);

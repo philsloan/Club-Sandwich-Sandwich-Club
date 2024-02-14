@@ -16,12 +16,4 @@
 {{/each}}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.rating-container .star').click(function () {
-            var value = $(this).data('value');
-            $(this).siblings('.star').removeClass('active').css('color', 'green');
-            $(this).prevAll('.star').addBack().addClass('active').css('color', 'orange');
-        });
-    });
-</script>
+<script src="/js/allSandwiches.js"></script>

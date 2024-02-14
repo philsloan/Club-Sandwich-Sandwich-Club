@@ -132,6 +132,13 @@ main {
     justify-content: center;
 }
 
+.sandwich-option .sub-header {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
 .sandwich-option ul {
     list-style-type: none;
     margin: 0;
