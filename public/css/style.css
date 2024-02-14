@@ -7,6 +7,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -15,9 +19,19 @@ header {
     background-color: rgb(247, 223, 191);
 }
 
-.sandwich-container{
+.sandwich-container {
     font-size: 24px; 
-            text-align: center; 
+    text-align: center;
+}
+
+.sandwich-container li {
+    font-size: 18px;
+    list-style-type: none;
+}
+
+.sandwich-container img {
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 header h1 {
@@ -103,7 +117,9 @@ main {
 .sandwich-option img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .sandwich-option .text-container {

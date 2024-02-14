@@ -5,26 +5,30 @@ const sequelize = require("../config/connection");
 router.get("/", async (req, res) => {
   console.log("getRoute");
   try {
-    const ratingDbList = await Rating.findAll({
+    const ratingDbList = await Sandwich.findAll({
+      attributes: [
+        "id",
+        "name",
+        "bread",
+        "condiment",
+        "meat",
+        "vegetable",
+        "cheese",
+        "other",
+        "image_link",
+        [sequelize.literal("(SELECT AVG(rating) FROM ratings WHERE sandwich_id = sandwiches.id)"), "avgRating"],
+      ],
       include: [
         {
           model: User,
           attributes: ["username"],
         },
-        {
-          model: Sandwich,
-        },
       ],
-      limit: 3,
-      attributes: {
-        include: [[sequelize.literal("(SELECT AVG(rating) FROM ratings WHERE ratings.sandwich_id = sandwich.id)"), "avgRating",],],
-      },
       order: [[sequelize.literal("avgRating"), "DESC"]],
+      limit: 3,
     });
-
-    const ratingsList = ratingDbList.map((rating) =>
-      rating.get({ plain: true })
-    );
+    const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
+    console.log(ratingsList);
     res.render("homepage", { ratingsList });
   } catch (error) {
     console.error(error);
