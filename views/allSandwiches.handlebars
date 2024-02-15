@@ -1,14 +1,14 @@
-{{#each cleanSandwiches as | sandwich |}}
+{{#each sandwichRating as | sandwich |}}
 <div class="sandwich">
     <h2>{{sandwich.name}}</h2>
     <div class="rating">
         <div class="rating-container">
             <p class="rate-text">Rate me!</p>
-            <span class="star" data-value="1" data-user="{{user.id}}">&#9733;</span>
-            <span class="star" data-value="2" data-user="{{user.id}}">&#9733;</span>
-            <span class="star" data-value="3" data-user="{{user.id}}">&#9733;</span>
-            <span class="star" data-value="4" data-user="{{user.id}}">&#9733;</span>
-            <span class="star" data-value="5" data-user="{{user.id}}">&#9733;</span>
+            <span class="star" data-value="1" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            <span class="star" data-value="2" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            <span class="star" data-value="3" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            <span class="star" data-value="4" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            <span class="star" data-value="5" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
         </div>
     </div>
     <img src="{{sandwich.image_link}}" alt="{{sandwich.name}}">
