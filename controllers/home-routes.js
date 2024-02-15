@@ -28,7 +28,11 @@ router.get("/", async (req, res) => {
       limit: 3,
     });
     const ratingsList = ratingDbList.map((rating) => rating.get({ plain: true }));
-    res.render("homepage", { ratingsList });
+    console.log("Logged in status: ", req.session.logged_in);
+    res.render("homepage", { 
+      ratingsList,
+      loggedIn: req.session.logged_in,
+     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
