@@ -69,6 +69,39 @@ main {
   padding: 20px;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 3rem 0;
+  background: #ffeacb;
+}
+
+#login-form input{
+  display: block;
+  height: 2rem;
+  margin: 0.5rem 7rem;
+}
+
+#login-form button {
+  width: 15%;
+  height: 2rem;
+  margin: 1rem auto;
+  border: none;
+  background:#aef0ac;
+  box-shadow: 0 0 0.5rem #dec8a7;
+}
+
+#login-form button:hover {
+  background:rgb(45, 168, 72);
+}
+
 .video-box {
   position: relative;
   width: 100%;
