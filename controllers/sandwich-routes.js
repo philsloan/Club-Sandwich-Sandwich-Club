@@ -64,6 +64,10 @@ router.get("/search", async (req, res) => {
     }
 });
 
+router.get("/newSandwich", async (req, res) => {
+  res.render("newSandwich", {userId: req.session.user_id});
+})
+
 
 
 

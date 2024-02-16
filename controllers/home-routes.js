@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
     res.render("homepage", { 
       ratingsList,
       loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
      });
   } catch (error) {
     console.error(error);

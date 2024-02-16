@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {Sandwich} = require("../../models");
 // Route for creating a new sandwich
 router.post('/', async (req, res) => {
+  console.log("Adding a new sandwich to the db!")
   try {
     const dbSandwichData = await Sandwich.create({
       name: req.body.name, 

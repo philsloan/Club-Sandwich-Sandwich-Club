@@ -74,6 +74,7 @@ main {
   justify-content: center;
 }
 
+#sandwich-form,
 #signup-form,
 #login-form {
   display: flex;
@@ -84,6 +85,7 @@ main {
   background: #ffeacb;
 }
 
+#sandwich-form input,
 #signup-form input,
 #login-form input {
   display: block;
@@ -91,6 +93,7 @@ main {
   margin: 0.5rem 7rem;
 }
 
+#sandwich-form button,
 #signup-form button,
 #login-form button {
   width: 15%;
@@ -101,6 +104,11 @@ main {
   box-shadow: 0 0 0.5rem #dec8a7;
 }
 
+#sandwich-form button {
+  width: 20%;
+}
+
+#sandwich-form button:hover
 #signup-form button:hover
 #login-form button:hover {
   background:rgb(45, 168, 72);
