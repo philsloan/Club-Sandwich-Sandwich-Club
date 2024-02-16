@@ -4,11 +4,31 @@
     <div class="rating">
         <div class="rating-container">
             <p class="rate-text">Rate me!</p>
-            <span class="star" data-value="1" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
-            <span class="star" data-value="2" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
-            <span class="star" data-value="3" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
-            <span class="star" data-value="4" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
-            <span class="star" data-value="5" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{#if (gte userRating 1)}}
+                <span class="star active" data-value="1" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="1" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte userRating 2)}}
+                <span class="star active" data-value="2" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="2" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte userRating 3)}}
+                <span class="star active" data-value="3" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="3" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte userRating 4)}}
+                <span class="star active" data-value="4" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="4" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte userRating 5)}}
+                <span class="star active" data-value="5" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="5" data-rater="{{../raterId}}" data-id="{{id}}">&#9733;</span>
+            {{/if}}
         </div>
     </div>
     <img src="{{sandwich.image_link}}" alt="{{sandwich.name}}">

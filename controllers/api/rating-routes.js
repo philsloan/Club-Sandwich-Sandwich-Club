@@ -36,6 +36,25 @@ router.post('/:id', async (req, res) => {
   }
 });
 
+// Route for updating a rating
+router.put("/:id", async (req, res) => {
+  try {
+    const ratingData = await Rating.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!ratingData) {
+      res.status(404).json({ message: "No rating found with that id!" });
+      return;
+    }
+    res.status(200).json(ratingData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.delete("/:id", async (req, res) => {
   try {
     const dbRatingData = await Rating.destroy({

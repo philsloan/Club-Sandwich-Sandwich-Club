@@ -12,12 +12,6 @@ router.get('/', async (req, res) => {
 
 router.get("/allSandwiches", async (req, res) => {
     try {
-        // const sandwiches = await Sandwich.findAll(); 
-        // const cleanSandwiches = sandwiches.map((sandwich) => {
-        //     return sandwich.get({plain:true})
-        // })
-
-
         const rawSandwichData = await Sandwich.findAll({ order: [["id", "ASC"]] });
         const sandwichArray = rawSandwichData.map((sandwich) =>
           sandwich.get({ plain: true })
@@ -39,8 +33,6 @@ router.get("/allSandwiches", async (req, res) => {
           sandwich.userRating = 0;
           return sandwich;
         })
-        console.log(sandwichRating);
-        // res.status(200).json(sandwichRating);
 
         res.render("allSandwiches", { 
             sandwichRating,
