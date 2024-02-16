@@ -36,6 +36,7 @@ router.post("/signup", async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
     const userData = await User.create(req.body);
+    console.log(userData);
 
     if (!userData) {
       res.status(400).json({ message: "Incorrect email, please try again" });

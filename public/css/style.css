@@ -74,6 +74,7 @@ main {
   justify-content: center;
 }
 
+#signup-form,
 #login-form {
   display: flex;
   flex-direction: column;
@@ -83,12 +84,14 @@ main {
   background: #ffeacb;
 }
 
-#login-form input{
+#signup-form input,
+#login-form input {
   display: block;
   height: 2rem;
   margin: 0.5rem 7rem;
 }
 
+#signup-form button,
 #login-form button {
   width: 15%;
   height: 2rem;
@@ -98,6 +101,7 @@ main {
   box-shadow: 0 0 0.5rem #dec8a7;
 }
 
+#signup-form button:hover
 #login-form button:hover {
   background:rgb(45, 168, 72);
 }
