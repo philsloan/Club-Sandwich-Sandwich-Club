@@ -39,12 +39,12 @@ User.init(
   {
     hooks: {
       async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        newUserData.password = await bcrypt.hash(newUserData.password, parseInt(process.env.COST_FACTOR));
         return newUserData;
       },
       async beforeBulkCreate(newUserData) {
         for (const newUser of newUserData) {
-          newUser.password = await bcrypt.hash(newUser.password, 10);
+          newUser.password = await bcrypt.hash(newUser.password, parseInt(process.env.COST_FACTOR));
         }
         return newUserData;
       },
