@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const fields = require("../utils/sandwichFields")
 const { Sandwich, Rating } = require("../models");
 
 router.get('/', async (req, res) => {
@@ -64,49 +65,7 @@ router.get("/search", async (req, res) => {
     }
 });
 
-router.get("/newSandwich", async (req, res) => {
-  const fields = [
-    { 
-      name: "name",
-      label: "Name:",
-      required: "required"
-    },
-    { 
-      name: "bread",
-      label: "Bread:",
-      required: ""
-    },
-    {
-      name: "condiment",
-      label: "Condiment:",
-      required: ""
-    },
-    {
-      name: "meat",
-      label: "Meat:",
-      required: ""
-    },
-    {
-      name: "vegetable",
-      label: "Vegetable:",
-      required: ""
-    },
-    {
-      name: "cheese",
-      label: "Cheese:",
-      required: ""
-    },
-    {
-      name: "other",
-      label: "Other:",
-      required: ""
-    },
-    {
-      name: "image",
-      label: "Image Link:",
-      required: ""
-    }];
-      
+router.get("/newSandwich", async (req, res) => {      
   res.render("newSandwich", 
   {
     fields,
@@ -114,9 +73,5 @@ router.get("/newSandwich", async (req, res) => {
     loggedIn: req.session.logged_in,
   });
 })
-
-
-
-
 
 module.exports = router;
