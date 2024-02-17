@@ -8,7 +8,10 @@ const newSandwichFormHandler = async (event) => {
   const vegetable = document.querySelector("#vegetable").value.trim();
   const cheese = document.querySelector("#cheese").value.trim();
   const other = document.querySelector("#other").value.trim();
-  const image_link = document.querySelector("#image").value.trim();
+  let image_link = document.querySelector("#image").value.trim();
+  if (!image_link) {
+    image_link = "../images/no-sandwich-image.jpg"
+  }
   const user_id = document.querySelector("#name").getAttribute('data-id')
 
   if (user_id && name) {

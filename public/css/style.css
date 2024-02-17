@@ -108,8 +108,8 @@ main {
   width: 20%;
 }
 
-#sandwich-form button:hover
-#signup-form button:hover
+#sandwich-form button:hover,
+#signup-form button:hover,
 #login-form button:hover {
   background:rgb(45, 168, 72);
 }
