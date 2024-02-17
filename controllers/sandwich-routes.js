@@ -55,11 +55,25 @@ router.get("/search", async (req, res) => {
     try {
       const searchTerm = req.query.term.toLowerCase();
       console.log("Search Term:", searchTerm);
-      const sandwich = await Sandwich.findOne({ where: { name: searchTerm } });
-      console.log("Found Sandwich:", sandwich);
+      const sandwich = await Sandwich.findOne({ 
+        where: { name: searchTerm },
+        include: [{ model: Rating }, { model: User }]
+      });
+
       if (sandwich) {
         const cleanSandwich = sandwich.get({ plain: true });
-        res.render("sandwich", { sandwich: cleanSandwich });
+        cleanSandwich.userRating = 0;
+        for (let i = 0; i < cleanSandwich.ratings.length; i++) {
+          if (cleanSandwich.ratings[i].user_id == req.session.user_id) {
+            cleanSandwich.userRating = cleanSandwich.ratings[i].rating;
+            break;
+          }
+        }        
+        res.render("sandwich", { 
+          sandwich: cleanSandwich,
+          loggedIn: req.session.logged_in,
+          raterId: req.session.user_id,          
+        });
       } else {
         res.render("sandwich", {
           message: "No sandwich found for the given term.",
