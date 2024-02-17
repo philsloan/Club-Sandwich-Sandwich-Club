@@ -347,8 +347,13 @@ body {
 }
 
 .sandwich-img {
-  max-width: 1500px;
-  height: auto;
+  /* max-width: 1500px;
+  height: auto; */
+  max-height: 400px;
+  width: 80%;
   display: block;
   margin: 0 auto 10px;
+  overflow: hidden;
+  position: relative;
+  object-fit: cover;
 }

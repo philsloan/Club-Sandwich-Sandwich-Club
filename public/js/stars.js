@@ -1,9 +1,11 @@
 const starEl = $(".rating-container .star");
+const soloStarEl = $(".solo-rating-container .star");
 
 const handleStarClick = async (event) => {
   const value = $(event.target).data("value");
   const raterId = await $(event.target).data("rater");
   const sandwichId = $(event.target).data("id");
+
 
   $(event.target).siblings(".star").removeClass("active").css("color", "green");
   $(event.target).prevAll(".star").addBack().addClass("active").css("color", "orange");
@@ -46,3 +48,4 @@ const handleStarClick = async (event) => {
 };
 
 starEl.click(handleStarClick);
+soloStarEl.click(handleStarClick);

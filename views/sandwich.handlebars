@@ -1,8 +1,38 @@
 
 <div class = "sandwich-container">
-    <h1>{{message}}</h1>
+    <h1>{{sandwich.name}}</h1>
     <img src="{{sandwich.image_link}}" class="sandwich-img">
-    <p stlye="font-size: 24px;">{{sandwich.name}}</p>
+    <div class="rating">
+        <div class="solo-rating-container">
+            <p class="rate-text">Rate me!</p>
+            {{#if (gte sandwich.userRating 1)}}
+                <span class="star active" data-value="1" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="1" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte sandwich.userRating 2)}}
+                <span class="star active" data-value="2" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="2" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte sandwich.userRating 3)}}
+                <span class="star active" data-value="3" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="3" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte sandwich.userRating 4)}}
+                <span class="star active" data-value="4" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="4" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{/if}}
+            {{#if (gte sandwich.userRating 5)}}
+                <span class="star active" data-value="5" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{else}}
+                <span class="star" data-value="5" data-rater="{{raterId}}" data-id="{{sandwich.id}}">&#9733;</span>
+            {{/if}}
+        </div>
+    </div>
+    <h2>Ingredients</h2>
     <li>{{sandwich.bread}}</li>
     <li>{{sandwich.condiment}}</li>
     <li>{{sandwich.meat}}</li>
@@ -10,4 +40,5 @@
     <li>{{sandwich.cheese}}</li>
     <li>{{sandwich.other}}</li>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/stars.js"></script>
