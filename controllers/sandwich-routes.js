@@ -46,7 +46,7 @@ router.get("/allSandwiches", async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   } else {
-    res.render("./login");
+    res.redirect("/login");
   }
 });
 
@@ -55,9 +55,9 @@ router.get("/search", async (req, res) => {
     try {
       const searchTerm = req.query.term.toLowerCase();
       console.log("Search Term:", searchTerm);
-      const sandwich = await Sandwich.findOne({ 
+      const sandwich = await Sandwich.findOne({
         where: { name: searchTerm },
-        include: [{ model: Rating }, { model: User }]
+        include: [{ model: Rating }, { model: User }],
       });
 
       if (sandwich) {
@@ -68,12 +68,33 @@ router.get("/search", async (req, res) => {
             cleanSandwich.userRating = cleanSandwich.ratings[i].rating;
             break;
           }
-        }        
-        res.render("sandwich", { 
-          sandwich: cleanSandwich,
-          loggedIn: req.session.logged_in,
-          raterId: req.session.user_id,          
-        });
+        }
+        if (cleanSandwich.user_id === req.session.user_id) {
+          fields[0].value = cleanSandwich.name;
+          fields[1].value = cleanSandwich.bread;
+          fields[2].value = cleanSandwich.condiment;
+          fields[3].value = cleanSandwich.meat;
+          fields[4].value = cleanSandwich.vegetable;
+          fields[5].value = cleanSandwich.cheese;
+          fields[6].value = cleanSandwich.other;
+          if (cleanSandwich.image_link === "../images/no-sandwich-image.jpg") {
+            fields[7].value = "";
+          } else {
+            fields[7].value = cleanSandwich.image_link;
+          }
+          res.render("updateSandwich", {
+            fields,
+            sandwichId: cleanSandwich.id,
+            loggedIn: req.session.logged_in,
+            raterId: req.session.user_id,
+          });
+        } else {
+          res.render("sandwich", {
+            sandwich: cleanSandwich,
+            loggedIn: req.session.logged_in,
+            raterId: req.session.user_id,
+          });
+        }
       } else {
         res.render("sandwich", {
           message: "No sandwich found for the given term.",
@@ -84,7 +105,7 @@ router.get("/search", async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   } else {
-    res.render("./login");
+    res.redirect("/login");
   }
 });
 
@@ -96,7 +117,7 @@ router.get("/newSandwich", async (req, res) => {
       loggedIn: req.session.logged_in,
     });
   } else {
-    res.render("./login");
+    res.redirect("/login");
   }
 });
 
@@ -133,20 +154,20 @@ router.get("/:id", async (req, res) => {
           sandwichId: sandwichData.id,
           loggedIn: req.session.logged_in,
           raterId: req.session.user_id,
-        });        
+        });
       } else {
         res.render("sandwich", {
           sandwich: sandwichData,
           loggedIn: req.session.logged_in,
           raterId: req.session.user_id,
-        });        
+        });
       }
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   } else {
-    res.render("./login");
+    res.redirect("/login");
   }
 });
 
