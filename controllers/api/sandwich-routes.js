@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Sandwich} = require("../../models");
+
 // Route for creating a new sandwich
 router.post('/', async (req, res) => {
   console.log("Adding a new sandwich to the db!")
@@ -18,6 +19,23 @@ router.post('/', async (req, res) => {
     res.status(200).json(dbSandwichData);
   } catch(err){
     console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const sandwichData = await Sandwich.update(req.body, {
+      where: {
+        id: req.params.id,
+      }
+    });
+    if (!sandwichData[0]) {
+      res.status(404).json({ message: "No sandwich found with that id!" });
+      return;      
+    }
+    res.status(200).json(sandwichData);
+  } catch (err) {
     res.status(500).json(err);
   }
 });

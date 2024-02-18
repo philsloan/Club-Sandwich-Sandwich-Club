@@ -74,6 +74,7 @@ main {
   justify-content: center;
 }
 
+#update-sandwich-form,
 #sandwich-form,
 #signup-form,
 #login-form {
@@ -85,6 +86,7 @@ main {
   background: #ffeacb;
 }
 
+#update-sandwich-form input,
 #sandwich-form input,
 #signup-form input,
 #login-form input {
@@ -93,6 +95,7 @@ main {
   margin: 0.5rem 7rem;
 }
 
+#update-sandwich-form button,
 #sandwich-form button,
 #signup-form button,
 #login-form button {
@@ -104,10 +107,15 @@ main {
   box-shadow: 0 0 0.5rem #dec8a7;
 }
 
+#update-sandwich-form button {
+  width: 30%;
+}
+
 #sandwich-form button {
   width: 20%;
 }
 
+#update-sandwich-form button:hover,
 #sandwich-form button:hover,
 #signup-form button:hover,
 #login-form button:hover {

@@ -115,11 +115,32 @@ router.get("/:id", async (req, res) => {
         }
       }
       // res.status(200).json(sandwichData);
-      res.render("sandwich", {
-        sandwich: sandwichData,
-        loggedIn: req.session.logged_in,
-        raterId: req.session.user_id,
-      });
+      if (sandwichData.user_id === req.session.user_id) {
+        fields[0].value = sandwichData.name;
+        fields[1].value = sandwichData.bread;
+        fields[2].value = sandwichData.condiment;
+        fields[3].value = sandwichData.meat;
+        fields[4].value = sandwichData.vegetable;
+        fields[5].value = sandwichData.cheese;
+        fields[6].value = sandwichData.other;
+        if (sandwichData.image_link === "../images/no-sandwich-image.jpg") {
+          fields[7].value = "";
+        } else {
+          fields[7].value = sandwichData.image_link;
+        }
+        res.render("updateSandwich", {
+          fields,
+          sandwichId: sandwichData.id,
+          loggedIn: req.session.logged_in,
+          raterId: req.session.user_id,
+        });        
+      } else {
+        res.render("sandwich", {
+          sandwich: sandwichData,
+          loggedIn: req.session.logged_in,
+          raterId: req.session.user_id,
+        });        
+      }
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

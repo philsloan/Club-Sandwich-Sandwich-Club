@@ -1,0 +1,13 @@
+<div class="form-container">
+    <form class="container" id="update-sandwich-form" data-id="{{sandwichId}}">
+        <h1>Update Sandwich</h1>
+        {{#each fields as |field|}}
+        <label for="{{field.name}}">{{field.label}}</label>
+        <input type="text" id="{{field.name}}" name="{{field.name}}" data-id="{{../userId}}" value="{{field.value}}"{{field.required}}>
+        {{/each}}
+
+        <button id="submit" type="submit">Update Sandwich</button>
+    </form>
+</div>
+
+<script src="/js/updateSandwich.js"></script>
