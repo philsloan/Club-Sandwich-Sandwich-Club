@@ -53,6 +53,10 @@ h3 {
   color: rgb(45, 168, 72);
 }
 
+p {
+  text-align: center;
+}
+
 .user-box {
   margin-left: auto;
 }

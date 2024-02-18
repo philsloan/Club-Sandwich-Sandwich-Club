@@ -32,6 +32,8 @@ const handleStarClick = async (event) => {
 
       if (!putResponse.ok) {
         alert("Failed to update rating.");
+      } else {
+        window.location.reload();
       }
     } else {
       const postResponse = await fetch(`/api/ratings/${sandwichId}`, {
@@ -42,6 +44,8 @@ const handleStarClick = async (event) => {
   
       if (!postResponse.ok) {
         alert("Failed to post rating.");
+      } else {
+        window.location.reload();
       }
     }
   }

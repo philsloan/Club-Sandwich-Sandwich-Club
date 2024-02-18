@@ -2,6 +2,7 @@
 <div class="sandwich">
     <a href="/sandwich/{{sandwich.id}}">
         <h2>{{sandwich.name}}</h2>
+        <p class="rate-text">Average Rating: {{format_rating sandwich.avgRating}}</p><br>
     </a>
     {{#if (deq ../raterId sandwich.user_id)}}
     <div class="rating">
