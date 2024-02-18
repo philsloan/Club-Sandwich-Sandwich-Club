@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const fields = require("../utils/sandwichFields");
 const { Sandwich, Rating, User } = require("../models");
+const sequelize = require("../config/connection");
 
 router.get("/", async (req, res) => {
   const sammichData = await Sandwich.findAll().catch((err) => {
@@ -13,7 +14,19 @@ router.get("/allSandwiches", async (req, res) => {
   if (req.session.logged_in) {
     try {
       const rawSandwichData = await Sandwich.findAll({
-        order: [["id", "ASC"]],
+        attributes: [
+          "id",
+          "name",
+          "bread",
+          "condiment",
+          "meat",
+          "vegetable",
+          "cheese",
+          "other",
+          "image_link",
+          [sequelize.literal("(SELECT AVG(rating) FROM ratings WHERE sandwich_id = sandwiches.id)"), "avgRating"],
+        ],          
+        order: [["avgRating", "DESC"]],
       });
       const sandwichArray = rawSandwichData.map((sandwich) =>
         sandwich.get({ plain: true })
@@ -125,6 +138,18 @@ router.get("/:id", async (req, res) => {
   if (req.session.logged_in) {
     try {
       const rawSandwichData = await Sandwich.findByPk(req.params.id, {
+        attributes: [
+          "id",
+          "name",
+          "bread",
+          "condiment",
+          "meat",
+          "vegetable",
+          "cheese",
+          "other",
+          "image_link",
+          [sequelize.literal("(SELECT AVG(rating) FROM ratings WHERE sandwich_id = sandwiches.id)"), "avgRating"],
+        ],        
         include: [{ model: Rating }, { model: User }],
       });
       const sandwichData = rawSandwichData.get({ plain: true });
