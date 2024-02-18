@@ -3,6 +3,7 @@
     <a href="/sandwich/{{sandwich.id}}">
         <h2>{{sandwich.name}}</h2>
     </a>
+    {{#if (deq ../raterId sandwich.user_id)}}
     <div class="rating">
         <div class="rating-container">
             <p class="rate-text">Rate me!</p>
@@ -33,6 +34,7 @@
             {{/if}}
         </div>
     </div>
+    {{/if}}
     <a href="/sandwich/{{sandwich.id}}">
         <img src="{{sandwich.image_link}}" alt="{{sandwich.name}}">
     </a>

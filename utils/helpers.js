@@ -4,4 +4,5 @@ module.exports = {
   lte: (int1,int2) => int1 <= int2,
   lt: (int1,int2) => int1 < int2,
   eq: (int1,int2) => int1 == int2,
+  deq: (int1,int2) => int1 !== int2,
 }
